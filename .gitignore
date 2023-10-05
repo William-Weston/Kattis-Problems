@@ -51,3 +51,6 @@ _deps
 # VSCode 
 .vscode/settings.json
 .vs/
+
+# Backup files
+*.backup
