@@ -41,6 +41,7 @@ enable_testing()
 
 find_package( GTest REQUIRED )
 
+# change to target_sources
 set( TEST_SOURCE 
 	src/Solver.cpp
    tests/mate_in_one_move.t.cpp
@@ -57,6 +58,7 @@ target_compile_options( ${TEST_SUITE}
 		-pg
 		-ftest-coverage
 		-fsanitize=address
+		-fno-omit-frame-pointer
 		-fsanitize=undefined
 			-fsanitize=shift
 			-fsanitize=shift-exponent
@@ -74,11 +76,11 @@ target_compile_options( ${TEST_SUITE}
 			-fsanitize=float-cast-overflow 
 			-fsanitize=enum
 			-fsanitize=pointer-overflow
-		-fsanitize-address-use-after-scope
+			-fsanitize-address-use-after-scope
 		-fstack-protector-all
 )
 
-target_link_options(${TEST_SUITE}  
+target_link_options( ${TEST_SUITE}  
 	PRIVATE 
 		-fsanitize=undefined
 		-fsanitize=address
